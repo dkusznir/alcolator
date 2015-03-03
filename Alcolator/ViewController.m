@@ -48,10 +48,10 @@
 {
     NSLog(@"Slider value changed to %f", sender.value);
     
-    float numberOfBrewsFloat = sender.value;
-    int numberOfBrewsInt = (int) numberOfBrewsFloat;
+    float numberOfBeersFloat = sender.value;
+    int numberOfBeersInt = (int) numberOfBeersFloat;
     
-    NSString *resultText = [NSString stringWithFormat:NSLocalizedString(@"Number of Beers: %d", nil), numberOfBrewsInt];
+    NSString *resultText = [NSString stringWithFormat:NSLocalizedString(@"Number of Beers: %d", nil), numberOfBeersInt];
     self.numberOfBeersSelected.text = resultText;
     
     [self calculateBeerToWine];
