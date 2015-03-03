@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,11 +16,69 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="uJ0-Gb-gCb">
+                                <rect key="frame" x="14" y="149" width="572" height="31"/>
+                                <connections>
+                                    <action selector="sliderValueDidChange:" destination="vXZ-lx-hvc" eventType="valueChanged" id="oS0-x5-oFs"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="???" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vk7-GJ-GZz">
+                                <rect key="frame" x="16" y="356" width="568" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqA-NI-Tk5">
+                                <rect key="frame" x="16" y="269" width="568" height="30"/>
+                                <state key="normal" title="Calculate!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="o5L-A3-yX7"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Number of Beers:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGd-LX-AIb">
+                                <rect key="frame" x="16" y="218" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="% Alcohol Content Per Beer" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qlV-oC-c2A">
+                                <rect key="frame" x="16" y="28" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldDidChange:" destination="vXZ-lx-hvc" eventType="editingChanged" id="CZg-9O-GdU"/>
+                                </connections>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qlV-oC-c2A" firstAttribute="trailing" secondItem="dqA-NI-Tk5" secondAttribute="trailing" id="7lg-8h-DVa"/>
+                            <constraint firstItem="qlV-oC-c2A" firstAttribute="leading" secondItem="Vk7-GJ-GZz" secondAttribute="leading" id="FSt-8Q-bId"/>
+                            <constraint firstItem="qlV-oC-c2A" firstAttribute="leading" secondItem="uJ0-Gb-gCb" secondAttribute="leading" id="K7k-gh-n4u"/>
+                            <constraint firstItem="qlV-oC-c2A" firstAttribute="trailing" secondItem="uJ0-Gb-gCb" secondAttribute="trailing" id="LbM-ot-Uhz"/>
+                            <constraint firstItem="qlV-oC-c2A" firstAttribute="trailing" secondItem="BGd-LX-AIb" secondAttribute="trailing" id="NOv-j4-Wqb"/>
+                            <constraint firstItem="uJ0-Gb-gCb" firstAttribute="top" secondItem="qlV-oC-c2A" secondAttribute="bottom" constant="91" id="Uyq-YE-ERY"/>
+                            <constraint firstItem="qlV-oC-c2A" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="crO-Ad-fMD"/>
+                            <constraint firstItem="qlV-oC-c2A" firstAttribute="leading" secondItem="BGd-LX-AIb" secondAttribute="leading" id="d4l-2R-vW5"/>
+                            <constraint firstItem="qlV-oC-c2A" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="jjy-tI-Ksv"/>
+                            <constraint firstItem="qlV-oC-c2A" firstAttribute="leading" secondItem="dqA-NI-Tk5" secondAttribute="leading" id="n54-3r-WbM"/>
+                            <constraint firstItem="qlV-oC-c2A" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" symbolic="YES" id="ne8-3p-a7C"/>
+                            <constraint firstItem="qlV-oC-c2A" firstAttribute="trailing" secondItem="Vk7-GJ-GZz" secondAttribute="trailing" id="uND-AJ-3gh"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="beerCountSlider" destination="uJ0-Gb-gCb" id="JfB-hT-amf"/>
+                        <outlet property="beerPercentTextField" destination="qlV-oC-c2A" id="T2u-hQ-tbK"/>
+                        <outlet property="numberOfBeersSelected" destination="BGd-LX-AIb" id="tTo-dA-b1H"/>
+                        <outlet property="resultLabel" destination="Vk7-GJ-GZz" id="StN-ja-gRu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="114" y="189"/>
         </scene>
     </scenes>
 </document>
