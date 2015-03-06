@@ -86,6 +86,9 @@
     [self.hideKeyboardTapGestureRecognizer addTarget:self action:@selector(tapGestureDidFire:)];
     
     self.resultLabel.numberOfLines = 0;
+    
+    //Setting title:
+    self.title = NSLocalizedString(@"Wine", @"Wine");
 
 }
 
@@ -151,7 +154,7 @@
         else if (LANDSCAPE)
         {
             
-            [self makeUIElements:667 withPadding:20 withItemHeight:40];
+            [self makeUIElements:667 withPadding:15 withItemHeight:40];
             
         }
     }
@@ -185,7 +188,7 @@
         else if (LANDSCAPE)
         {
             
-            [self makeUIElements:568 withPadding:20 withItemHeight:40];
+            [self makeUIElements:568 withPadding:10 withItemHeight:40];
             
         }
     }
@@ -202,7 +205,7 @@
         else if (LANDSCAPE)
         {
             
-            [self makeUIElements:480 withPadding:20 withItemHeight:40];
+            [self makeUIElements:480 withPadding:10 withItemHeight:40];
         
         }
     }
@@ -251,7 +254,7 @@
     CGFloat itemHeight = enterItemHeight;
     CGFloat itemWidth = viewWidth - padding - padding;
     
-    self.beerPercentTextField.frame = CGRectMake(padding, padding, itemWidth, itemHeight);
+    self.beerPercentTextField.frame = CGRectMake(padding, (padding + padding + padding + padding), itemWidth, itemHeight);
     
     CGFloat bottomOfTextField = CGRectGetMaxY(self.beerPercentTextField.frame);
     self.beerCountSlider.frame = CGRectMake(padding, (bottomOfTextField + padding), itemWidth, itemHeight);
@@ -287,6 +290,22 @@
     NSString *resultText = [NSString stringWithFormat:NSLocalizedString(@"Number of Beers: %d", nil), numberOfBeersInt];
     self.numberOfBeersSelected.text = resultText;
     
+    float nonBeerEquivalent = [self calculateNonBeer:5 withPercentage:0.13];
+    
+    NSString *titleText;
+    
+    if (nonBeerEquivalent == 1)
+    {
+        titleText = @"glass";
+    }
+    
+    else
+    {
+        titleText = @"glasses";
+    }
+    
+    self.title = [NSString stringWithFormat:NSLocalizedString(@"Wine (%.02f %@)", nil), nonBeerEquivalent, titleText];
+    
     [self.beerPercentTextField resignFirstResponder];
 }
 
@@ -299,6 +318,24 @@
 - (void)tapGestureDidFire:(UITapGestureRecognizer *)sender
 {
     [self.beerPercentTextField resignFirstResponder];
+}
+
+- (CGFloat)calculateNonBeer:(float)ounces withPercentage:(float)percentage
+{
+    int numberOfBeers = self.beerCountSlider.value;
+    int ouncesInOneBeerGlass = 12;
+    float ouncesInNonBeer = ounces;
+    float percentageAlcoholInNonBeer = percentage;
+    
+    //Calculate alcohol content in beer:
+    float alcoholPercentageOfBeer = [self.beerPercentTextField.text floatValue] / 100;
+    float ouncesOfAlcoholPerBeer = ouncesInOneBeerGlass * alcoholPercentageOfBeer;
+    float ouncesOfAlcoholTotal = ouncesOfAlcoholPerBeer * numberOfBeers;
+    
+    float ouncesOfAlcoholPerNonBeer = ouncesInNonBeer * percentageAlcoholInNonBeer;
+    float numberOfNonBeerForEquivalentAlcoholAmount = ouncesOfAlcoholTotal / ouncesOfAlcoholPerNonBeer;
+    
+    return numberOfNonBeerForEquivalentAlcoholAmount;
 }
 
 - (void)calculateBeerToNonBeerWithOunces:(float)ounces withPercentage:(float)percentage for:(NSString *)typeOfNonBeer

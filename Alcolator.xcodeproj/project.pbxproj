@@ -14,6 +14,7 @@
 		AA420CBF1AA60C990017B9BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA420CBE1AA60C990017B9BA /* Images.xcassets */; };
 		AA420CC21AA60C990017B9BA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA420CC01AA60C990017B9BA /* LaunchScreen.xib */; };
 		AA420CCE1AA60C990017B9BA /* AlcolatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA420CCD1AA60C990017B9BA /* AlcolatorTests.m */; };
+		AAE2F5851AA9FF790095CE84 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE2F5841AA9FF790095CE84 /* MainMenuViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,8 @@
 		AA420CC71AA60C990017B9BA /* AlcolatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlcolatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA420CCC1AA60C990017B9BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA420CCD1AA60C990017B9BA /* AlcolatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlcolatorTests.m; sourceTree = "<group>"; };
+		AAE2F5831AA9FF790095CE84 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		AAE2F5841AA9FF790095CE84 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +91,8 @@
 				AA420CB91AA60C990017B9BA /* ViewController.m */,
 				AA13D3B41AA7A2A400BC52E3 /* WhiskeyViewController.h */,
 				AA13D3B51AA7A2A400BC52E3 /* WhiskeyViewController.m */,
+				AAE2F5831AA9FF790095CE84 /* MainMenuViewController.h */,
+				AAE2F5841AA9FF790095CE84 /* MainMenuViewController.m */,
 				AA420CBE1AA60C990017B9BA /* Images.xcassets */,
 				AA420CC01AA60C990017B9BA /* LaunchScreen.xib */,
 				AA420CB11AA60C990017B9BA /* Supporting Files */,
@@ -224,6 +229,7 @@
 				AA13D3B61AA7A2A400BC52E3 /* WhiskeyViewController.m in Sources */,
 				AA420CB71AA60C990017B9BA /* AppDelegate.m in Sources */,
 				AA420CB41AA60C990017B9BA /* main.m in Sources */,
+				AAE2F5851AA9FF790095CE84 /* MainMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,7 +16,9 @@
 @property (weak, nonatomic) UILabel *numberOfBeersSelected;
 
 - (void)buttonPressed:(UIButton *)sender;
+- (CGFloat)calculateNonBeer:(float)ounces withPercentage:(float)percentage;
 - (void)calculateBeerToNonBeerWithOunces:(float)ounces withPercentage:(float)percentage for:(NSString *)typeOfNonBeer;
+- (void)sliderValueDidChange:(UISlider *)sender;
 
 
 

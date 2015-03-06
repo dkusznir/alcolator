@@ -14,11 +14,38 @@
 
 @implementation WhiskeyViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.title = NSLocalizedString(@"Whiskey", @"Whiskey");
+}
+
 - (void)buttonPressed:(UIButton *)sender
 {
     [self.beerPercentTextField resignFirstResponder];
     [self calculateBeerToNonBeerWithOunces:1 withPercentage:0.4 for:@"whiskey"];
-    
 }
+
+- (void)sliderValueDidChange:(UISlider *)sender
+{
+    [super sliderValueDidChange:sender];
+    float nonBeerEquivalent = [self calculateNonBeer:1 withPercentage:0.4];
+    
+    NSString *titleText;
+    
+    if (nonBeerEquivalent == 1)
+    {
+        titleText = @"shot";
+    }
+    
+    else
+    {
+        titleText = @"shots";
+    }
+    
+    self.title = [NSString stringWithFormat:NSLocalizedString(@"Whiskey (%.02f %@)", nil), nonBeerEquivalent, titleText];
+
+}
+
 
 @end

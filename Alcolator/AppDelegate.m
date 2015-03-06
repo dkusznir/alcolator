@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "WhiskeyViewController.h"
+#import "MainMenuViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,8 +22,9 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    ViewController *viewController = [[ViewController alloc] init];
-    self.window.rootViewController = viewController;
+    MainMenuViewController *mainMenuViewController = [[MainMenuViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mainMenuViewController];
+    self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     
     return YES;
