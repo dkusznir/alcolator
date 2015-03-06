@@ -7,9 +7,24 @@
 //
 
 #import "ViewController.h"
-#define IS_iPHONE5 ([[UIScreen mainScreen] bounds].size.height == 568)
-#define IS_iPHONE6 ([[UIScreen mainScreen] bounds].size.height == 667)
-#define IS_iPHONE6PLUS ([[UIScreen mainScreen] bounds].size.height == 736)
+#import <sys/utsname.h>
+
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_RETINA ([[UIScreen mainScreen] scale] >= 2.0)
+
+#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+#define SCREEN_MAX_LENGTH (MAX(SCREEN_WIDTH, SCREEN_HEIGHT))
+#define SCREEN_MIN_LENGTH (MIN(SCREEN_WIDTH, SCREEN_HEIGHT))
+
+#define IS_IPHONE_4_OR_LESS (IS_IPHONE && SCREEN_MAX_LENGTH < 568.0)
+#define IS_IPHONE_5 (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
+#define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
+#define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
+
+#define LANDSCAPE (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
+#define PORTRAIT (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation))
 
 @interface ViewController () <UITextFieldDelegate>
 
@@ -107,54 +122,67 @@
     
 }
 
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return ( UIInterfaceOrientationMaskAll );
+}
+
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
     
-    if (IS_iPHONE6)
+    NSLog(@"[[UIScreen mainScreen] bounds]: %@", NSStringFromCGRect([[UIScreen mainScreen] bounds]));
+ 
+    if (IS_IPHONE_6)
     {
-        if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation))
+        
+        if (PORTRAIT)
         {
             
             [self makeUIElements:375 withPadding:20 withItemHeight:44];
             
         }
         
-        else if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
+        else if (LANDSCAPE)
         {
             
             [self makeUIElements:667 withPadding:20 withItemHeight:40];
             
         }
     }
-    
-    else if (IS_iPHONE6PLUS)
+
+    else if (IS_IPHONE_6P)
     {
-        if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation))
+        if (PORTRAIT)
         {
             
             [self makeUIElements:414 withPadding:20 withItemHeight:44];
             
         }
         
-        else if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
+        else if (LANDSCAPE)
         {
             
             [self makeUIElements:736 withPadding:20 withItemHeight:40];
             
         }
     }
-    
-    else if (IS_iPHONE5)
+
+    else if (IS_IPHONE_5)
     {
-        if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation))
+        if (PORTRAIT)
         {
             
             [self makeUIElements:320 withPadding:20 withItemHeight:44];
             
         }
         
-        else if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
+        else if (LANDSCAPE)
         {
             
             [self makeUIElements:568 withPadding:20 withItemHeight:40];
@@ -162,41 +190,58 @@
         }
     }
     
-    else if ([[[UIDevice currentDevice] model] containsString:@"iPad"])
+    else if (IS_IPHONE_4_OR_LESS)
     {
-        if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation))
-        {
-            
-            [self makeUIElements:768 withPadding:20 withItemHeight:44];
-            
-        }
-        
-        else if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
-        {
-            
-            [self makeUIElements:1024 withPadding:20 withItemHeight:40];
-            
-        }
-    }
-    
-    else
-    {
-        if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation))
+        if (PORTRAIT)
         {
             
             [self makeUIElements:320 withPadding:20 withItemHeight:44];
-            
+        
         }
         
-        else if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
+        else if (LANDSCAPE)
         {
             
             [self makeUIElements:480 withPadding:20 withItemHeight:40];
-            
+        
         }
     }
     
     
+    else if (IS_RETINA)
+    {
+        if (PORTRAIT)
+        {
+            
+            [self makeUIElements:768 withPadding:20 withItemHeight:44];
+        
+        }
+        
+        else if (LANDSCAPE)
+        {
+            
+            [self makeUIElements:1024 withPadding:20 withItemHeight:40];
+        
+        }
+    }
+    
+    else if (IS_IPAD)
+    {
+        if (PORTRAIT)
+        {
+            
+            [self makeUIElements:768 withPadding:20 withItemHeight:44];
+        
+        }
+        
+        else if (LANDSCAPE)
+        {
+            
+            [self makeUIElements:1024 withPadding:20 withItemHeight:40];
+        
+        }
+    }
+
 }
 
 - (void)makeUIElements:(CGFloat)enterViewWidth withPadding:(CGFloat)enterPadding withItemHeight:(CGFloat)enterItemHeight
@@ -320,6 +365,5 @@
         self.resultLabel.text = resultText;
     }
 }
-
 
 @end
