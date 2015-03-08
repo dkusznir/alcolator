@@ -14,10 +14,21 @@
 
 @implementation WhiskeyViewController
 
+- (instancetype) init
+{
+    self = [super init];
+    
+    if (self)
+    {
+        self.title = NSLocalizedString(@"Whiskey", @"Whiskey");
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = NSLocalizedString(@"Whiskey", @"Whiskey");
 }
 
 - (void)buttonPressed:(UIButton *)sender

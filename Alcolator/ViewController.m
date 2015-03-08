@@ -35,6 +35,19 @@
 
 @implementation ViewController
 
+- (instancetype) init
+{
+    self = [super init];
+    
+    if (self)
+    {
+        self.title = NSLocalizedString(@"Wine", @"Wine");
+        [self.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -18)];
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -86,9 +99,6 @@
     [self.hideKeyboardTapGestureRecognizer addTarget:self action:@selector(tapGestureDidFire:)];
     
     self.resultLabel.numberOfLines = 0;
-    
-    //Setting title:
-    self.title = NSLocalizedString(@"Wine", @"Wine");
 
 }
 
@@ -138,9 +148,7 @@
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
-    
-    NSLog(@"[[UIScreen mainScreen] bounds]: %@", NSStringFromCGRect([[UIScreen mainScreen] bounds]));
- 
+     
     if (IS_IPHONE_6)
     {
         
@@ -306,7 +314,9 @@
     
     self.title = [NSString stringWithFormat:NSLocalizedString(@"Wine (%.02f %@)", nil), nonBeerEquivalent, titleText];
     
-    [self.beerPercentTextField resignFirstResponder];
+    //[self.beerPercentTextField resignFirstResponder];
+    
+    [self.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%d", (int)sender.value]];
 }
 
 - (void)buttonPressed:(UIButton *)sender
@@ -401,6 +411,13 @@
         
         self.resultLabel.text = resultText;
     }
+}
+
+- (void) textFieldDidEndEditing:(UITextField *)textField
+{
+    textField.placeholder = NSLocalizedString(@"% Alcohol Content Per Beer", @"Beer percent placeholder text");
+    //Notice that this works (when user taps anywhere outside textField, the textField content changes accordingly":
+    //textField.placeholder = NSLocalizedString(@"% Alcohol Content Per Beer", @"Beer percent placeholder text");
 }
 
 @end
