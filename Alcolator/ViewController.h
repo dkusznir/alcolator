@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) UITextField *beerPercentTextField;
 @property (weak, nonatomic) UILabel *resultLabel;
@@ -19,8 +19,7 @@
 - (CGFloat)calculateNonBeer:(float)ounces withPercentage:(float)percentage;
 - (void)calculateBeerToNonBeerWithOunces:(float)ounces withPercentage:(float)percentage for:(NSString *)typeOfNonBeer;
 - (void)sliderValueDidChange:(UISlider *)sender;
-
-
+- (void)textFieldDidEndEditing:(UITextField *)textField;
 
 @end
 
