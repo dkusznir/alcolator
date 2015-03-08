@@ -41,8 +41,8 @@
     // Do any additional setup after loading the view, typically from a nib.
     UIColor *niceDarkBlueColor = [UIColor colorWithRed:51.0/255.0 green:125.0/255.0 blue:199.0/255.0 alpha:1.0];
     UIColor *minimumTintForSlider = [UIColor colorWithRed:200.0/255.0 green:225.0/255.0 blue:200.0/255.0 alpha:1.0];
-    UIColor *backgroundColor = [UIColor colorWithRed:250.0/255.0 green:250.0/255.0 blue:250.0/255.0 alpha:1.0];
-    self.view.backgroundColor = [UIColor colorWithRed:240.0/255.0 green:240.0/255.0 blue:240.0/255.0 alpha:1.0];
+    UIColor *backgroundColor = [UIColor colorWithRed:240.0/255.0 green:240.0/255.0 blue:240.0/255.0 alpha:1.0];
+    self.view.backgroundColor = backgroundColor;
     
     //Setting up beer text field:
     self.beerPercentTextField.delegate = self;
