@@ -415,9 +415,7 @@
 
 - (void) textFieldDidEndEditing:(UITextField *)textField
 {
-    textField.placeholder = NSLocalizedString(@"% Alcohol Content Per Beer", @"Beer percent placeholder text");
-    //Notice that this works (when user taps anywhere outside textField, the textField content changes accordingly":
-    //textField.text = NSLocalizedString(@"% Alcohol Content Per Beer", @"Beer percent placeholder text");
+    self.beerPercentTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
 }
 
 @end
